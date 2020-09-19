@@ -1,0 +1,31 @@
+@import "./variables";
+
+.app {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px 20px 0 20px;
+}
+
+
+button.simpleBtn{
+  padding: 10px 25px;
+  text-transform: uppercase;
+  background: none;
+
+  color: $fontColor;
+  border: solid $lightBackground 1px;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-size: 1.5rem;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $lightBackground;
+    color: $secondColor;
+  }
+}

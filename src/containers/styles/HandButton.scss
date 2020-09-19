@@ -1,0 +1,64 @@
+@import "../../variables";
+
+button.btnHand {
+    padding: 0;
+    border: none;
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    width: 13vw;
+    height: 13vw;
+
+    background-color: transparent;
+    border-radius: 50%;
+    transition: 0.5s;
+    cursor: pointer;
+
+    @include styledBtn(rgb(145, 165, 192));
+
+    &.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &.rock {
+      top: 20%;
+      left: 50%;
+      @include styledBtn($colorActionOne);
+    }
+
+    &.paper {
+      top: 53%;
+      left: 31%;
+      @include styledBtn($colorActionTwo);
+    }
+    &.scissors {
+      top: 53%;
+      left: 69%;
+      @include styledBtn($colorActionThree);
+    }
+
+    .gameIco {
+      transform: translateY(18%);
+      color: $secondColor;
+      font-size: 5rem;
+    }
+
+    &.selected {
+      top: 33%;
+      left: 18%;
+    }
+
+    &.cpuSelected {
+      top: 33%;
+      left: unset;
+      bottom: unset;
+      right: 18%;
+      transform: translate(50%, -50%);
+    }
+
+    &:disabled {
+      cursor: default;
+    }
+  }

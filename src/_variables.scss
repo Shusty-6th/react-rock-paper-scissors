@@ -1,0 +1,67 @@
+$fontColor: hsl(317, 100%, 97%);
+$secondColor: #20135a;
+
+$lightBackground: hsl(317, 100%, 97%);
+
+$colorActionOne: hsl(2, 93%, 42%);
+$colorActionTwo: hsl(116, 92%, 42%);
+$colorActionThree: hsl(58, 100%, 45%);
+
+@mixin button-shadowsBefore($col) {
+  background-color: $col;
+  background: linear-gradient(
+    to bottom,
+    rgba($col, 0.7) 0%,
+    rgba($col, 0.9) 41%,
+    rgba($col, 1) 100%
+  );
+  box-shadow: rgba($col, 0.5) 0px 10px 0 0px;
+}
+
+@mixin button-shadowsAfter($col) {
+  box-shadow: rgba($col, 0.5) 0px 10px 0 0px inset;
+}
+
+@mixin styledBtn($col) {
+  &:before {
+    padding: 0;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    @include button-shadowsBefore($col);
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    transition: 0.3s;
+    z-index: -10;
+  }
+
+  &:after {
+    padding: 0;
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    @include button-shadowsAfter($col);
+    background-color: $lightBackground;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: 0.3s;
+    z-index: -5;
+  }
+
+  &:not([disabled]):hover:before {
+
+    box-shadow: rgba($col, 0.5) 0px 0px 0 0px;
+    transform: translate(0, 10px);
+  }
+
+  &:not([disabled]):hover:after {
+    box-shadow: rgba($col, 0.5) 0px 0px 0 0px inset;
+    transform: translate(-50%, calc(-50% + 10px));
+  }
+}
